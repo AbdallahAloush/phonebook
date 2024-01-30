@@ -19,21 +19,35 @@ typedef struct{
 
 
 // We will start by building the project in-memory
-void new_contact(){
+
+void safe_input(char* destination, size_t max_length, const char* prompt){
+    printf("%s", prompt);
+    if(fgets(destination, max_length, stdin) == NULL){
+        perror("Error reading input");
+        exit(EXIT_FAILURE);
+    }
+    destination[strcspn(destination, "\n")] = '\0';     //Remove trailing
+}
+
+Contact new_contact(){
     Contact new_contact;
-    char* scanner = malloc(sizeof(char)*MAX_EMAIL_LENGTH);
-    printf("Enter the first name:\t");
-    fgets(scanner, MAX_EMAIL_LENGTH, stdin);
-    strcpy(new_contact.name.first, scanner);
-    printf("Enter the last name:\t");
-    fgets(scanner, MAX_EMAIL_LENGTH, stdin);
-    strcpy(new_contact.name.last, scanner);
-    printf("Enter the email:\t");
-    fgets(scanner, MAX_EMAIL_LENGTH, stdin);
-    strcpy(new_contact.email, scanner);
+
+    safe_input(new_contact.name.first, MAX_NAME_LENGTH, "Enter first name:\t");
+    safe_input(new_contact.name.last, MAX_NAME_LENGTH, "Enter last name:\t");
+    safe_input(new_contact.email, MAX_EMAIL_LENGTH, "Enter email:\t");
+
+    return new_contact;
+}
+
+void print_contact(Contact* contact){
+    printf("Contact:{\n");
+    printf("\tName:\t%s %s\n", contact->name.first, contact->name.last);
+    printf("\tEmail:\t%s\n", contact->email);
+    printf("}\n");
 }
 
 int main(int argc, char const *argv[]){
-    new_contact();
+    Contact contact = new_contact();
+    print_contact(&contact);
     return 0;
 }
