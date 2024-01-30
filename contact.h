@@ -22,6 +22,6 @@ void print_contact(Contact* contact);
 
 void safe_input(char* destination, size_t max_length, const char* prompt);
 
-Contact new_contact();
+Contact contact_from_stdin();
 
 #endif

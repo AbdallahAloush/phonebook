@@ -17,10 +17,10 @@ void safe_input(char* destination, size_t max_length, const char* prompt){
         perror("Error reading input");
         exit(EXIT_FAILURE);
     }
-    destination[strcspn(destination, "\n")] = '\0';     //Remove trailing
+    destination[strcspn(destination, " \n")] = '\0';     //Remove trailing
 }
 
-Contact new_contact(){
+Contact contact_from_stdin(){
     Contact new_contact;
 
     safe_input(new_contact.name.first, MAX_NAME_LENGTH, "Enter first name:\t");
