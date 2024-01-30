@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -std=c17
+CFLAGS = -Wall -Wextra -std=c99
 SRCDIR = src
 BINDIR = bin
 
@@ -11,9 +11,9 @@ OBJECTS = $(patsubst $(SRCDIR)/%.c,$(BINDIR)/%.o,$(SOURCES))
 # The final executable
 EXECUTABLE = main
 
-.PHONY: all clean
+.PHONY: all clean create_bin_dir
 
-all: $(EXECUTABLE)
+all: create_bin_dir $(EXECUTABLE)
 
 $(EXECUTABLE): $(OBJECTS)
 	$(CC) $(CFLAGS) $^ -o $@
@@ -21,6 +21,10 @@ $(EXECUTABLE): $(OBJECTS)
 # Rule to build object files
 $(BINDIR)/%.o: $(SRCDIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
+
+# Target to create the bin directory if it does not exist
+create_bin_dir:
+	@mkdir -p $(BINDIR)
 
 clean:
 	rm -f $(BINDIR)/*.o $(EXECUTABLE)
