@@ -9,12 +9,12 @@ typedef struct ContactNode{
     struct ContactNode* right;
 }ContactNode;
 
-typedef struct{
-    ContactNode root;
-    int contact_count;
-}ContactTree;
+// typedef struct{
+//     ContactNode root;
+//     int contact_count;
+// }ContactTree;
 
-ContactNode new_node(Contact contact);
-ContactTree init_tree(Contact contact);
-void insert_contact(ContactNode root, Contact);
+// ContactNode new_node(Contact contact);
+// ContactTree init_tree(Contact contact);
+void insert_contact(ContactNode* root, Contact contact);
 #endif
