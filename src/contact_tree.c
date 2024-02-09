@@ -36,7 +36,7 @@ ContactNode* insert_contact(ContactNode*root, Contact contact)
 
 Contact* search_contact(ContactNode* root, char* last_name){
     if (root == NULL){
-        printf("\n\033[1;31mError:\033[0m Not Found\n");
+        printf("\n\033[1;31merror: Contact Not Found\033[0m\n");
         return NULL;        //! Check for this error when using the function
     }
     int result = strcasecmp(last_name, root->contact.name.last);
