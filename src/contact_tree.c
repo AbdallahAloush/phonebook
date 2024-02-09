@@ -4,6 +4,7 @@
 #include "contact_tree.h"
 #include "contact.h"
 
+//TODO: Add delete functionality
 ContactNode* new_node(Contact contact)
 {
     ContactNode* contact_node = (ContactNode*) malloc(sizeof(ContactNode));
@@ -34,14 +35,13 @@ ContactNode* insert_contact(ContactNode*root, Contact contact)
 }
 
 Contact* search_contact(ContactNode* root, char* last_name){
-    printf("Searching");
     if (root == NULL){
         printf("\n\033[1;31mError:\033[0m Not Found\n");
         return NULL;        //! Check for this error when using the function
     }
     int result = strcasecmp(last_name, root->contact.name.last);
-    printf("\nWe are comparing %s and %s\nThe result of the comparison is %d",last_name, root->contact.name.last, result);
     if (result == 0){
+        printf("\033[1;32mContact Found\033[0m\n");
         return &(root->contact);
     }
     else if (result > 0){

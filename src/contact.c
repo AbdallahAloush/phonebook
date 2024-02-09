@@ -29,3 +29,8 @@ Contact contact_from_stdin(){
 
     return new_contact;
 }
+
+Contact contact_from_string(char* contact_line){
+    Contact new_contact;
+
+}

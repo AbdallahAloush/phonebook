@@ -16,10 +16,7 @@ int main(int argc, char const *argv[]){
     root = insert_contact(root, new_contact);
     Contact another_contact = contact_from_stdin();
     root = insert_contact(root, another_contact);
-    Contact con = contact_from_stdin();
-    root = insert_contact(root, con);
     inorderTraversal(root);
-    printf("Enta l8ait kda tmam");
     char* last = "Aloush";
     Contact* result = (Contact*) malloc(sizeof(Contact));
     result = search_contact(root, last);
