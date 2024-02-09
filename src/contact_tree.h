@@ -12,4 +12,6 @@ typedef struct ContactNode{
 ContactNode* insert_contact(ContactNode* root, Contact contact);
 
 Contact* search_contact(ContactNode* root, char* last_name);
+
+void inorderTraversal(ContactNode* root);
 #endif

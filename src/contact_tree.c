@@ -10,7 +10,6 @@ ContactNode* new_node(Contact contact)
     contact_node->contact = contact;
     contact_node->left = NULL;
     contact_node->right = NULL;
-
     return contact_node;
 }
 
@@ -18,6 +17,7 @@ ContactNode* insert_contact(ContactNode*root, Contact contact)
 {
     if (root == NULL){
         root = new_node(contact);
+        printf("\nAdd New Contact\n");
         return root;
     }
 
@@ -25,10 +25,39 @@ ContactNode* insert_contact(ContactNode*root, Contact contact)
     int order_result = strcasecmp(contact.name.last, root->contact.name.last);
 
     if (order_result >= 0){
-        root = insert_contact(root->right, contact);
+        root->right = insert_contact(root->right, contact);
     }
     else{
-        root = insert_contact(root->left, contact);
+        root->left = insert_contact(root->left, contact);
     }
     return root;
+}
+
+Contact* search_contact(ContactNode* root, char* last_name){
+    printf("Searching");
+    if (root == NULL){
+        printf("\n\033[1;31mError:\033[0m Not Found\n");
+        return NULL;        //! Check for this error when using the function
+    }
+    int result = strcasecmp(last_name, root->contact.name.last);
+    printf("\nWe are comparing %s and %s\nThe result of the comparison is %d",last_name, root->contact.name.last, result);
+    if (result == 0){
+        return &(root->contact);
+    }
+    else if (result > 0){
+        return search_contact(root->right, last_name);
+    }
+    else {
+        return search_contact(root->left, last_name);
+    }
+}
+
+void inorderTraversal(ContactNode* root) {
+    if (root == NULL) {
+        return;
+    }
+
+    inorderTraversal(root->left); // Traverse left subtree
+    print_contact(&(root->contact));
+    inorderTraversal(root->right);// Traverse right subtree
 }
