@@ -28,6 +28,8 @@ Contact contact_from_stdin(){
     safe_input(new_contact.name.last, MAX_NAME_LENGTH, "Enter last name:\t");
     safe_input(new_contact.email, MAX_EMAIL_LENGTH, "Enter email:\t");
     safe_input(new_contact.phonenumber, MAX_PHONE_LENGTH, "Enter phonenumber:\t");
+
+    printf("\033[1;32mNew Contact\033[0m\n");
     return new_contact;
 }
 
@@ -43,8 +45,8 @@ Contact contact_from_string(char* contact_line){
         // if equal 1 it will use the second name
         // if equal 2 it will use the third name
         // printf(" %s\n", token);
+        //! using strncpy is not efficient nor secure, but I will use it now to gain some time
         int token_len = strlen(token)+1;
-        // printf("This is the length of the token: %d\n and %d", token_len, i);
         switch (i)
         {
         case 0:
@@ -66,7 +68,7 @@ Contact contact_from_string(char* contact_line){
         token = strtok(NULL, delimeter);
         i++;
     }
-    print_contact(&new_contact);
-    return new_contact;
 
+    printf("\033[1;32mNew Contact\033[0m\n");
+    return new_contact;
 }

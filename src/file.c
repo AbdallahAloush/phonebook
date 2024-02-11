@@ -24,12 +24,10 @@ int load_file(ContactNode** root){
 
     while(fgets(buffer, MAX_LINE_LENGTH, save_file)){
         buffer[strcspn(buffer, "\n")] = '\0';     //Remove trailing
-        printf("line %d: %s\n\n", i, buffer);
         local_root = insert_contact(local_root, contact_from_string(buffer));
         i++;
     }
     fclose(save_file);
-    printf("%d\n", i);
 
     return i;
 }

@@ -10,6 +10,7 @@
 //TODO: add date of birth and address
 //TODO: persist contact to a file
 //TODO: validate input from user
+//TODO: optimize the print statements and make the cli colored
 
 int main(int argc, char const *argv[]){
     ContactNode* root = (ContactNode*)malloc(sizeof(ContactNode));
