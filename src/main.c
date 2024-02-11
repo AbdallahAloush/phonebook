@@ -12,11 +12,16 @@
 //TODO: validate input from user
 
 int main(int argc, char const *argv[]){
-    load_file();
-    // ContactNode* root = (ContactNode*)malloc(sizeof(ContactNode));
-    // root = NULL;
-    // Contact new_contact = contact_from_stdin();
-    // root = insert_contact(root, new_contact);
+    ContactNode* root = (ContactNode*)malloc(sizeof(ContactNode));
+    root = NULL;
+    Contact new_contact = contact_from_stdin();
+    root = insert_contact(root, new_contact);
+    int count_contacts = load_file(&root);
+    printf("The number of loaded contacts:\t%d", count_contacts);
+    system("clear");
+    inorderTraversal(root);
+
+    printf("The number of loaded contacts:\t%d\n", count_contacts);
     // Contact another_contact = contact_from_stdin();
     // root = insert_contact(root, another_contact);
     // inorderTraversal(root);

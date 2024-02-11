@@ -24,4 +24,6 @@ void safe_input(char* destination, size_t max_length, const char* prompt);
 
 Contact contact_from_stdin();
 
+Contact contact_from_string(char* contact_line);
+
 #endif

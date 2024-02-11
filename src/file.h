@@ -1,10 +1,10 @@
 #ifndef FILE_H
 #define FILE_H
 
-#include <stdbool.h>
+#include "contact_tree.h"
 
-bool load_file();
+int load_file(ContactNode** root);
 
-bool save_file();
+int save_file();
 
 #endif
